@@ -4,24 +4,34 @@
     <title>Plataforma de Visualização de Dados</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
-      body{ background-color: #F5F5F5; margin:120px; color: #333;     
-        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;};
+      body{ background-color: #F5F5F5; margin:120px; color: #333;      
+     font-family: Cousine, Menlo, Monaco, Courier, monospace;
+     font-size: 14px;}
       .container {
-        padding-top: 100px;}
+        padding-top: 100px;
+      }
+      td {
+        font-weight: 400; 
+      }  
       th, td {
         background-color: white;
         color: dimgray;
         border-bottom: 3px solid lightgray;
         line-height: 50px;
-        font-size: 10px;
-      };
+        padding: 10px;
+        white-space: nowrap;
+      }
+      p { color: #0dc4a3;
+          font-weight: bold;
+          font-size: 19px; }
       th {padding: 10px;}
       tr {border-bottom-color: gray; }
     </style>
   </head>
   <body>
-  <p>Arquivos: {{name}}</p>
+  <p>Arquivos: {% for name in names%} {name}} 
+  
+  {% endfor %} </p>
     <table>
         <thead>
             <tr>
