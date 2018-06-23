@@ -29,9 +29,10 @@
     </style>
   </head>
   <body>
-  <p>Arquivos: {% for name in names%} {name}} 
-  
-  {% endfor %} </p>
+  <p>Arquivos: {% for name in names %} 
+                    {{name}}
+            {% endfor %} 
+            </p>
     <table>
         <thead>
             <tr>
@@ -43,8 +44,8 @@
         <tbody>
           {% for line in body_data %}
               <tr>  
-                    {%for l in line%}
-                      <td>{{l}}</td>
+                    {%for key, value in line.iteritems()%}
+                      <td>{{value}}</td>
                     {% endfor%}
               </tr>
           {% endfor %}    
