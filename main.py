@@ -4,7 +4,6 @@ from heapq import merge
 from flask import Flask, render_template
 
 app = Flask(__name__)
-header=[]
 
 @app.route("/")
 def template_test():
@@ -52,23 +51,38 @@ def createTable(header):
 					for h in header:
 							table[header[ header.index(h)] ] = ""
 							columns.append(h)			
-	return table, columns	
+	return table, columns
+
+def updateTable(header, oldTable):
+	columns = []
+	if (len(header) != 0):
+					for h in header:
+							oldTable[header[ header.index(h)] ] = ""
+							columns.append(h)
+									
+	return oldTable, columns
 
 def body_data():
-	with open ('./data/acidentes-2000.csv', 'rb') as file:
-		tableValues = []
-		reader = csv.reader(file, delimiter=';')
-		tableTemplate, columns = createTable(createHeader(reader))
-	  
-		for i, line in enumerate(reader):
-				table = tableTemplate
+	tableValues = []
+	for f in getFiles():
+		with open (f, 'rb') as file:
+		
+			csvFile = readCSVfile(file)
 
-				for j, colummValue in enumerate(line):
-						table[columns[j]]= colummValue
-										
-				tableValues.append(table.copy())
+			if tableValues == []:
+				tableTemplate, columns = createTable(createHeader(csvFile))
+			else:
+			  tableTemplate, columns = updateTable(createHeader(csvFile), tableTemplate)
+		  
+			for i, line in enumerate(csvFile):
+					table = tableTemplate
 
-				if i >= 5: break
+					for j, lineValue in enumerate(line):
+							table[columns[j]]= lineValue
+											
+					tableValues.append(table.copy())
+
+					if i >= 5: break
 	return tableValues
 
 if __name__ == '__main__':
