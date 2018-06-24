@@ -3,18 +3,18 @@
   <head>
     <title>Plataforma de Visualização de Dados</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
   </head>
-  <body>
+  <body data-role="main" class="ui-content">
   <p>Arquivos: {% for name in names %} 
                     {{name}}
             {% endfor %} 
-            </p>          
-    <table id="mstrTable">
+            </p>
+  <div id="container">
+    <table id="mstrTable" data-role="table" data-mode="columntoggle" class="ui-responsive infotbl hidecol" data-column-btn-text = "Remover Colunas">
         <thead>
               <tr>
                 {% for header in header_data %}
-                  <th>{{header}}</th>
+                  <th data-priority="2" >{{header}}</th>
                 {% endfor %}      
               </tr>
         </thead>
@@ -28,11 +28,13 @@
           {% endfor %}    
         </tbody>
     </table>
+  </div>
     <footer>
       <a href="http://www.inf.pucrs.br/davint" target="_blank"> Develop by DaVint - Data Visualization and Interaction Lab</a> 
     </footer>
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/index.js') }}" ></script>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   </body>
-   <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/index.js') }}" ></script>
 </html>

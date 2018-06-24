@@ -73,7 +73,7 @@ def body_data():
 											
 					tableValues.append(table.copy())
 
-					if i >= 5: break
+					if i >= 10: break
 	return tableValues
 
 if __name__ == '__main__':
