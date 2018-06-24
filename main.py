@@ -44,23 +44,14 @@ def createHeader(first_line):
 		break
 	return header
 
-def createTable(header):
-	table = collections.OrderedDict()
+def populateTable(header, tableValues):
 	columns = []
 	if (len(header) != 0):
 					for h in header:
-							table[header[ header.index(h)] ] = ""
-							columns.append(h)			
-	return table, columns
-
-def updateTable(header, oldTable):
-	columns = []
-	if (len(header) != 0):
-					for h in header:
-							oldTable[header[ header.index(h)] ] = ""
+							tableValues[header[ header.index(h)] ] = ""
 							columns.append(h)
-									
-	return oldTable, columns
+
+	return tableValues, columns
 
 def body_data():
 	tableValues = []
@@ -70,9 +61,9 @@ def body_data():
 			csvFile = readCSVfile(file)
 
 			if tableValues == []:
-				tableTemplate, columns = createTable(createHeader(csvFile))
+				tableTemplate, columns = populateTable(createHeader(csvFile), collections.OrderedDict())
 			else:
-			  tableTemplate, columns = updateTable(createHeader(csvFile), tableTemplate)
+			  tableTemplate, columns = populateTable(createHeader(csvFile), tableTemplate)
 		  
 			for i, line in enumerate(csvFile):
 					table = tableTemplate
