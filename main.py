@@ -58,7 +58,7 @@ def populateTable(header, tableValues):
 def getTableHeader(table):
 	value = []
 	for key, value in table.items():
-    	value.append(key)
+	   value.append(key)
 	return value
 
 def body_data():
