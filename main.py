@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def template_test():
-	return render_template('template.html', header_data=header_data(), body_data=body_data(), names= pathFiles())
+	header, body = body_data()
+	return render_template('template.html', header_data=header, body_data=body, names= pathFiles())
 
 def header_data():
 	headerValues=[]
@@ -54,6 +55,12 @@ def populateTable(header, tableValues):
 
 	return tableValues, columns
 
+def getTableHeader(table):
+	value = []
+	for key, value in table.items():
+    value.append(key)
+	return value
+
 def body_data():
 	tableValues = []
 	for f in getFiles():
@@ -75,7 +82,7 @@ def body_data():
 					tableValues.append(table.copy())
 
 					if i >= 10: break
-	return tableValues
+	return tableValues, getTableHeader(tableTemplate)
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
