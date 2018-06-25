@@ -56,10 +56,10 @@ def populateTable(header, tableValues):
 	return tableValues, columns
 
 def getTableHeader(table):
-	value = []
+	names = []
 	for key, value in table.items():
-	   value.append(key)
-	return value
+	   names.append(key)
+	return names
 
 def body_data():
 	tableValues = []
