@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def template_test():
-	header, body = body_data()
+	body, header = body_data()
 	return render_template('template.html', header_data=header, body_data=body, names= pathFiles())
 
 def header_data():
