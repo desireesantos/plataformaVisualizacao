@@ -22,7 +22,7 @@
         <tbody>
           {% for line in body_data %}
               <tr>  
-                    {%for key, value in line.iteritems()%}
+                    {%for key, value in line.items()%}
                       <td>{{value}}</td>
                     {% endfor%}
               </tr>
