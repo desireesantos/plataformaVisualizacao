@@ -1,7 +1,7 @@
+import os
 import csv
 import collections
 from heapq import merge
-from pml import os
 from flask import Flask, render_template
 
 app = Flask(__name__)
