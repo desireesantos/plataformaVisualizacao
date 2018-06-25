@@ -13,7 +13,7 @@ def template_test():
 def header_data():
 	headerValues=[]
 	for f in getFiles():
-		with open (f, 'rb') as file:
+		with open (f, 'r') as file:
 			headerValues = createHeader(readCSVfile(file))
 	return headerValues
 
@@ -57,7 +57,7 @@ def populateTable(header, tableValues):
 def body_data():
 	tableValues = []
 	for f in getFiles():
-		with open (f, 'rb') as file:
+		with open (f, 'r') as file:
 		
 			csvFile = readCSVfile(file)
 
