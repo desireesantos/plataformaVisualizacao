@@ -5,19 +5,27 @@ body{
   margin:120px;
   font-size: 14px;
   overflow-x: auto;
-
 }
 
-p { color: #0dc4a3;
-    font-weight: bold;
-    font-size: 20px;
-    position: absolute;
-    padding-left: 7px;
+p {
+	color: #0dc4a3;
+  font-weight: bold;
+  font-size: 20px;
+  position: absolute;
+  padding-left: 7px;
 }
 
-td { font-weight: 400;}
-th { padding: 10px; }
-tr { border-bottom-color: gray; }
+td {
+	font-weight: 400;
+}
+
+th {
+	padding: 10px;
+}
+
+tr {
+	border-bottom-color: gray;
+}
 
 tr th:hover{
   background-color: lightgray;
@@ -38,6 +46,7 @@ th,td {
   padding: 10px;
   white-space: nowrap; 
 }
+
 footer {
   margin-top: 20px;
   font-weight: 900;
