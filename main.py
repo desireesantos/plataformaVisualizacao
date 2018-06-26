@@ -8,34 +8,25 @@ app = Flask(__name__)
 
 @app.route("/")
 def template_test():
-	body, header = body_data()
-	return render_template('template.html', header_data=header, body_data=body, names= pathFiles())
+	bodyValues, headerValues = generateData()
 
-def header_data():
-	headerValues=[]
-	for f in getFiles():
-		with open (f, 'r') as file:
-			headerValues = createHeader(readCSVfile(file))
-	return headerValues
+	return render_template('datavisualization.html', headerTable=headerValues, 
+		bodyTable=bodyValues, names= pathFiles())
 
-def readCSVfile(file):
+def readCSV(file):
 	return csv.reader(file, delimiter=';')
-
-def sortedHeader(columms):
-	return list(set(columms))
 
 def getFiles():
 	return ['./data/acidentes-2000.csv', './data/acidentes-2016.csv']
 
 def pathFiles():
-	names = []
-	for file in getFiles():
-		names.append(fileName(file))
-	return names
+	return list(map(lambda file: fileName(file), getFiles()))
 
 def fileName(file):
-	name = (file.split('./data/'))[1]
-	return name.split('.csv')[0]  
+	return (file.split('./data/'))[1].split('.csv')[0]
+
+def headerNames(table):
+	return list(map(lambda headerName: headerName , table.iterkeys()))
 
 def createHeader(first_line):
 	header = list()
@@ -55,18 +46,13 @@ def populateTable(header, tableValues):
 
 	return tableValues, columns
 
-def getTableHeader(table):
-	names = []
-	for key, value in table.items():
-	   names.append(key)
-	return names
 
-def body_data():
+def generateData():
 	tableValues = []
 	for f in getFiles():
 		with open (f, 'r') as file:
 		
-			csvFile = readCSVfile(file)
+			csvFile = readCSV(file)
 
 			if tableValues == []:
 				tableTemplate, columns = populateTable(createHeader(csvFile), collections.OrderedDict())
@@ -82,7 +68,7 @@ def body_data():
 					tableValues.append(table.copy())
 
 					if i >= 10: break
-	return tableValues, getTableHeader(tableTemplate)
+	return tableValues, headerNames(tableTemplate)
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
