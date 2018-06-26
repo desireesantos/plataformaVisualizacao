@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Plataforma de Visualização de Dados</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body data-role="main" class="ui-content">
+  <p> Arquivos: {% for name in names %} 
+                    {{name}}
+            {% endfor %} 
+            </p>
+  <div id="container">
+    <table id="containerTable" data-role="table" data-mode="columntoggle" class="ui-responsive infotbl hidecol" data-column-btn-text = "Remover Colunas">
+        <thead>
+              <tr>
+                {% for header in headerTable %}
+                  <th data-priority="2" >{{header}}</th>
+                {% endfor %}      
+              </tr>
+        </thead>
+        <tbody>
+          {% for line in bodyTable %}
+              <tr>  
+                    {%for key, value in line.items()%}
+                      <td>{{value}}</td>
+                    {% endfor%}
+              </tr>
+          {% endfor %}    
+        </tbody>
+    </table>
+  </div>
+    <footer>
+      <a href="http://www.inf.pucrs.br/davint" target="_blank"> Develop by DaVint - Data Visualization and Interaction Lab</a> 
+    </footer>
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script type = "text/javascript" src = "{{ url_for('static', filename = 'js/index.js') }}" ></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  </body>
+</html>

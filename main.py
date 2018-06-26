@@ -13,6 +13,7 @@ def template_test():
 	return render_template('datavisualization.html', headerTable=headerValues, 
 		bodyTable=bodyValues, names= pathFiles())
 
+
 def readCSV(file):
 	return csv.reader(file, delimiter=';')
 
@@ -26,7 +27,7 @@ def fileName(file):
 	return (file.split('./data/'))[1].split('.csv')[0]
 
 def headerNames(table):
-	return list(map(lambda headerName: headerName , table.iterkeys()))
+	return list(map(lambda headerName: headerName , table.keys()))
 
 def createHeader(first_line):
 	header = list()
