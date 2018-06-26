@@ -23,7 +23,6 @@ def getFiles():
 	{'name':'./data/acidentes-2016.csv', 'fileNumber': 1 }]
 
 def pathFiles():
-	print  list(map(lambda file: fileName(file), getFiles()))
 	return list(map(lambda file: fileName(file), getFiles()))
 
 def fileName(file):
