@@ -68,3 +68,11 @@ footer a {
   overflow:auto;
   margin: 8px;
 }
+
+p.table_0, tr.table_0 td{
+	background-color: #d9f2e6;
+}
+
+p.table_1, tr.table_1 td{
+	background-color: #FDEBD0;
+}

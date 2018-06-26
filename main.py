@@ -1,5 +1,6 @@
 import os
 import csv
+import operator
 import collections
 from heapq import merge
 from flask import Flask, render_template
@@ -18,7 +19,8 @@ def readCSV(file):
 	return csv.reader(file, delimiter=';')
 
 def getFiles():
-	return ['./data/acidentes-2000.csv', './data/acidentes-2016.csv']
+	return [{'name':'./data/acidentes-2000.csv', 'fileNumber': 0 },
+	{'name':'./data/acidentes-2016.csv', 'fileNumber': 1 }]
 
 def pathFiles():
 	return list(map(lambda file: fileName(file), getFiles()))
@@ -50,9 +52,8 @@ def populateTable(header, tableValues):
 
 def generateData():
 	tableValues = []
-	for f in getFiles():
+	for number, f in enumerate(getFiles()):
 		with open (f, 'r') as file:
-		
 			csvFile = readCSV(file)
 
 			if tableValues == []:
@@ -66,7 +67,7 @@ def generateData():
 					for j, lineValue in enumerate(line):
 							table[columns[j]]= lineValue
 											
-					tableValues.append(table.copy())
+					tableValues.append({'value': table.copy(), 'fileNumber': number})
 
 					if i >= 10: break
 	return tableValues, headerNames(tableTemplate)

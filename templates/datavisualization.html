@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body data-role="main" class="ui-content">
-  <p> Arquivos: {% for name in names %} 
-                    {{name}}
+  <p class='table_0'> Arquivos: {% for file in files %}
+                    {{file.name}}
             {% endfor %} 
             </p>
   <div id="container">
@@ -20,8 +20,8 @@
         </thead>
         <tbody>
           {% for line in bodyTable %}
-              <tr>  
-                    {%for key, value in line.items()%}
+              <tr class=table_{{line.fileNumber}}>
+                    {%for key, value in line.value.items()%}
                       <td>{{value}}</td>
                     {% endfor%}
               </tr>
