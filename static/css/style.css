@@ -69,10 +69,20 @@ footer a {
   margin: 8px;
 }
 
-p.table_0, tr.table_0 td{
+tr.table_0 td{
 	background-color: #d9f2e6;
 }
 
-p.table_1, tr.table_1 td{
+tr.table_1 td{
 	background-color: #FDEBD0;
+}
+
+span.table_0{
+	background-color: #d9f2e6; 
+	color: #0dc4a3;
+}
+
+span.table_1 {
+	background-color: #FDEBD0;
+	color:  #ff9933;
 }

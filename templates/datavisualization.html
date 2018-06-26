@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body data-role="main" class="ui-content">
-  <p class='table_0'> Arquivos: {% for file in files %}
-                    {{file.name}}
+  <p> Arquivos: {% for file in names %}
+                   <span class=table_{{file.fileNumber}}> {{file.name}} </span>
             {% endfor %} 
             </p>
   <div id="container">

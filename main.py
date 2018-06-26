@@ -23,10 +23,12 @@ def getFiles():
 	{'name':'./data/acidentes-2016.csv', 'fileNumber': 1 }]
 
 def pathFiles():
+	print  list(map(lambda file: fileName(file), getFiles()))
 	return list(map(lambda file: fileName(file), getFiles()))
 
 def fileName(file):
-	return (file.split('./data/'))[1].split('.csv')[0]
+	return {'name': (file['name'].split('./data/'))[1].split('.csv')[0],
+					'fileNumber':file['fileNumber']}
 
 def headerNames(table):
 	return list(map(lambda headerName: headerName , table.keys()))
@@ -53,7 +55,7 @@ def populateTable(header, tableValues):
 def generateData():
 	tableValues = []
 	for number, f in enumerate(getFiles()):
-		with open (f, 'r') as file:
+		with open (f['name'], 'r') as file:
 			csvFile = readCSV(file)
 
 			if tableValues == []:
