@@ -2,7 +2,6 @@ body{
   font-family: Cousine, Menlo, Monaco, Courier, monospace;
   background-color: #F5F5F5;
   color: #333;
-  margin:120px;
   font-size: 14px;
   overflow-x: auto;
 }
@@ -11,7 +10,6 @@ p {
 	color: #0dc4a3;
   font-weight: bold;
   font-size: 20px;
-  position: absolute;
   padding-left: 7px;
 }
 
@@ -66,7 +64,7 @@ footer a {
 #container {
   width:100%;
   overflow:auto;
-  margin-top: 58px;
+  margin-top: 22px;
   margin-left: 7px;
 }
 
